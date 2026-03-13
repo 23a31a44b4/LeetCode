@@ -18,6 +18,5 @@ class Solution(object):
                     queue.append(cur.left)
                 if cur.right:
                     queue.append(cur.right)
-                if n==i+1:
-                    res.append(cur.val)
+            res.append(cur.val)
         return res
