@@ -6,11 +6,14 @@
 #         self.right = right
 class Solution(object):
     def kthSmallest(self, root, k):
-       l=[]
-       def pre(root):
-            if root:
-                pre(root.left)
-                l.append(root.val)
-                pre(root.right)
-       pre(root)
-       return l[k-1]
+        stack=[]
+        while True:
+            while root:
+                stack.append(root)
+                root=root.left
+            cur=stack.pop()
+            k-=1
+            if k==0:
+                return cur.val
+            root=cur.right
+        
