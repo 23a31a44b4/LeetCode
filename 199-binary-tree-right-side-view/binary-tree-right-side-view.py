@@ -11,14 +11,13 @@ class Solution(object):
         res=[]
         queue=[root]
         while queue:
-            sublist=[]
-            for _ in range(len(queue)):
+            n=len(queue)
+            for i in range(n):
                 cur = queue.pop(0)
-                sublist.append(cur.val)
                 if cur.left:
                     queue.append(cur.left)
                 if cur.right:
                     queue.append(cur.right)
-            res.append(sublist[-1])
-            
+                if n==i+1:
+                    res.append(cur.val)
         return res
