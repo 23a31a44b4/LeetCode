@@ -9,7 +9,7 @@ class Solution(object):
                 pivota.append(nums[i])
             elif nums[i]>pivot:
                 right.append(nums[i])
-            elif nums[i]<pivot:
+            else :
                 left.append(nums[i])
         return left+pivota+right
         
