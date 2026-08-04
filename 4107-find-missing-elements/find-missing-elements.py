@@ -8,4 +8,3 @@ class Solution:
             if i not in heap_set:
                 res.append(i)
         return res
-
