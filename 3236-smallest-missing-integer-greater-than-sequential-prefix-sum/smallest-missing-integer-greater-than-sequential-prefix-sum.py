@@ -1,17 +1,13 @@
 class Solution(object):
     def missingInteger(self, nums):
-        i=0
-        seen=set(nums)
         ans=nums[0]
-        for i in range(1,len(nums)):
-            if nums[i]==nums[i-1]+1:
-                ans+=nums[i]
+        dup=set(nums)
+        for j in range(1,len(nums)):
+            if nums[j]==nums[j-1]+1:
+                ans+=nums[j]
             else:
                 break
-        while ans in seen:
+        while ans in dup:
             ans+=1
-
         return ans
-        
-
         
