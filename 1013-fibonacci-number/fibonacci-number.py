@@ -19,19 +19,21 @@ class Solution(object):
         # return memo[-1]      
 
         #tabulation
-        # dp = [0]*(n+1)
-        # dp[1] = 1
-        # for i in range(2,n+1):
-        #     dp[i]=dp[i-1]+dp[i-2]
-        # return dp[-1]  
-
-        #spaceoptimization
         if n<2:
             return n
-        f0 = 0
-        f1 = 1
+        dp = [0]*(n+1)
+        dp[1] = 1
         for i in range(2,n+1):
-            res = f0 + f1
-            f0 = f1
-            f1 = res
-        return f1
+            dp[i]=dp[i-1]+dp[i-2]
+        return dp[-1]  
+
+        #spaceoptimization
+        # if n<2:
+        #     return n
+        # f0 = 0
+        # f1 = 1
+        # for i in range(2,n+1):
+        #     res = f0 + f1
+        #     f0 = f1
+        #     f1 = res
+        # return f1
