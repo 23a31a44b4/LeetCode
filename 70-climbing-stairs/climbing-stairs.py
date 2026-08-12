@@ -1,14 +1,11 @@
 class Solution(object):
     def climbStairs(self, n):
-        memo ={}
-        memo[1] = 1
-        memo[2] = 2
-        
-        def climb(n):
-            if n in memo: 
+        memo=[-1]*(n+1)
+        def backtrack(n):
+            if n<=2:
+                return n
+            if memo[n]!=-1:
                 return memo[n]
-            else:   
-                memo[n] =  climb(n-1) + climb(n-2)
-                return memo[n]
-        
-        return climb(n)
+            memo[n]=backtrack(n-1)+backtrack(n-2)
+            return memo[n]
+        return backtrack(n)
