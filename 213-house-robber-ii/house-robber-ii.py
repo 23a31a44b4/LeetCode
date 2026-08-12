@@ -12,7 +12,7 @@ class Solution(object):
         nums2=nums[1:]
         r3,r4=0,0
         for i in range(len(nums2)):
-            res1=max(nums2[i]+r3,r4)
+            res=max(nums2[i]+r3,r4)
             r3=r4
-            r4=res1      
+            r4=res     
         return max(r2,r4)
