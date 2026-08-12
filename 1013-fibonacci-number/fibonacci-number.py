@@ -36,4 +36,4 @@ class Solution(object):
             res = f0 + f1
             f0 = f1
             f1 = res
-        return f1
+        return res
