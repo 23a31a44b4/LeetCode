@@ -1,19 +1,26 @@
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+class Solution(object):
+    def productExceptSelf(self, nums):
         ans=1
-        res=[0]*len(nums)
-        zero=nums.count(0)
-        if zero>1:
-            return res
-        for i in nums:
-            if i!=0:
-                ans=ans*i
-        if zero==1:
-            zero_idx=nums.index(0)
-            res[zero_idx]=ans
-            return res
-        for i,x in enumerate(nums):
-            res[i]=ans//x
-        return res
-
+        zero=0
+        for num in nums:
+            if num==0:
+                zero+=1
+            else:
+                ans*=num
+        print(ans)
         
+        if zero==0:
+            res=[]
+            for num in nums:
+                res.append(ans//num)
+            
+        elif zero==1:
+            res=[]
+            for num in nums:
+                if num==0:
+                    res.append(ans)
+                else:
+                    res.append(0)
+        elif zero>=2:
+            res=[0]*len(nums)
+        return res
