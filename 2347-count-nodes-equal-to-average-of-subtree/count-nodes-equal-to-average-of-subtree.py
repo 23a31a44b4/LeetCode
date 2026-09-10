@@ -11,27 +11,23 @@ class Solution:
         sum=0
         count=0
         def preorder(root):
-            global sum,count
             if root is None:
-                return
-            sum+=root.val
-            count+=1
-            preorder(root.left)
-            preorder(root.right)
+                return 0,0
+            leftsum,leftcount=preorder(root.left)
+            rightsum,rightcount=preorder(root.right)
+            return leftsum+rightsum+root.val,leftcount+rightcount+1
         stack=[root]
         while stack:
             current=stack.pop()
-            preorder(current)
-            node.append([current.val,sum//count])
-            sum =0
-            count=0
+            totalsum,totalcount=preorder(current)
+            node.append([current.val,totalsum//totalcount])
             if current.right:
                 stack.append(current.right)
             if current.left:
                 stack.append(current.left)
         print(node)
         ans=0
-        for i in node:
-            if i[0]==i[1]:
+        for i,j in node:
+            if i==j:
                 ans+=1
         return ans
