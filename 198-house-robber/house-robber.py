@@ -1,0 +1,17 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        # def backtrack(n):
+        #     if n>=len(nums):
+        #         return 0
+        #     return max(nums[n]+backtrack(n+2),backtrack(n+1))
+        # return backtrack(0)
+
+        def memoization(n):
+            if n>=len(nums):
+                return 0
+            if memo[n]!=-1:
+                return memo[n]
+            memo[n]=max(nums[n]+memoization(n+2),memoization(n+1))
+            return memo[n]
+        memo=[-1]*len(nums)
+        return memoization(0)
