@@ -5,9 +5,16 @@ class Solution:
         n=len(nums)
         nums1=nums[:n-1]
         nums2=nums[1:]
-        dp1=nums1+[0,0]
-        dp2=nums2+[0,0]
+        # dp1=nums1+[0,0]
+        # dp2=nums2+[0,0]
+        r1,r2,r3,r4=0,0,0,0
         for i in range(len(nums1)-1,-1,-1):
-            dp1[i]=max(nums1[i]+dp1[i+2],dp1[i+1])
-            dp2[i]=max(nums2[i]+dp2[i+2],dp2[i+1])
-        return max(dp1[0],dp2[0])
+            # dp1[i]=max(nums1[i]+dp1[i+2],dp1[i+1])
+            # dp2[i]=max(nums2[i]+dp2[i+2],dp2[i+1])
+            res=max(nums1[i]+r2,r1)
+            r2=r1
+            r1=res
+            res1=max(nums2[i]+r4,r3)
+            r4=r3
+            r3=res1
+        return max(r1,r3)
