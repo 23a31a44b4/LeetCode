@@ -1,18 +1,13 @@
-class Solution(object):
-    def rob(self, nums):
-        if len(nums)<=1:
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums)==1:
             return nums[0]
-        r1,r2=0,0
         n=len(nums)
         nums1=nums[:n-1]
-        for i in range(len(nums1)):
-            res=max(nums1[i]+r1,r2)
-            r1=r2
-            r2=res
         nums2=nums[1:]
-        r3,r4=0,0
-        for i in range(len(nums2)):
-            res=max(nums2[i]+r3,r4)
-            r3=r4
-            r4=res     
-        return max(r2,r4)
+        dp1=nums1+[0,0]
+        dp2=nums2+[0,0]
+        for i in range(len(nums1)-1,-1,-1):
+            dp1[i]=max(nums1[i]+dp1[i+2],dp1[i+1])
+            dp2[i]=max(nums2[i]+dp2[i+2],dp2[i+1])
+        return max(dp1[0],dp2[0])
